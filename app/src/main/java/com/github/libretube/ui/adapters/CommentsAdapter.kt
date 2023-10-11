@@ -69,7 +69,7 @@ class CommentsAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CommentsViewHolder, position: Int) {
-        val comment = comments[position]
+        val comment = comments[holder.bindingAdapterPosition]
         holder.binding.apply {
             commentInfos.text = comment.author + TextUtils.SEPARATOR + comment.commentedTime
 
@@ -135,4 +135,6 @@ class CommentsAdapter(
     }
 
     override fun getItemCount() = comments.size
+
+    override fun getItemViewType(position: Int) = position
 }
